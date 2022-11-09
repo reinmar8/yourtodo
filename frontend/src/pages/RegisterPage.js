@@ -20,7 +20,7 @@ const RegisterPage = () => {
         if(userInfo) {
           navigate('/yourtodo');
         }
-      },[userInfo])
+      },[userInfo ,navigate])
 
     const submitHandler = async (e) => {
         e.preventDefault();

@@ -39,7 +39,7 @@ const HomePage = () => {
     if(!userInfo) {
       navigate('/');
     }
-  },[userInfo])
+  },[userInfo, navigate])
 
   const fetchTodos = async() => {
     try {
