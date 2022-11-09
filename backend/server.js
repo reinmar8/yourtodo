@@ -5,6 +5,7 @@ import seedRouter from "./routes/seedRoutes.js";
 import userRouter from "./routes/userRoutes.js";
 import cors from 'cors'
 import { todoRouter } from "./routes/todoRoutes.js";
+import path from 'path';
 
 const app = express();
 app.use(express.json());
@@ -24,6 +25,14 @@ mongoose.connect(process.env.MONGODB_URI)
 app.use('/api/seed', seedRouter);
 app.use('/api/users', userRouter);
 app.use('/api/todos', todoRouter);
+
+
+const __dirname = path.resolve();
+app.use(express.static(path.join(__dirname, '/frontend/build')));
+
+app.get('*', (req, rs) =>
+    res.sendFile(path.join(__dirname, '/frontend/build/index.html'))
+);
 
 
 const port = process.env.PORT || 5000;
