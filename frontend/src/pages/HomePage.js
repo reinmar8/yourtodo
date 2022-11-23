@@ -43,7 +43,7 @@ const HomePage = () => {
 
   const fetchTodos = async() => {
     try {
-      const { data } = await axios.get('http://localhost:5000/api/todos/gettodo',
+      const { data } = await axios.get('/api/todos/gettodo',
         {
           headers: { authorization: `Bearer ${userInfo.token}` }
         }
@@ -65,7 +65,7 @@ const HomePage = () => {
     e.preventDefault();
     try {
       dispatch({ type: 'DONE_REQUEST' })
-      const { data } = await axios.post('http://localhost:5000/api/todos/addtodo', 
+      const { data } = await axios.post('/api/todos/addtodo', 
         {
           todo,
           user: userInfo._id
@@ -83,7 +83,7 @@ const HomePage = () => {
   const deleteHandler = async (todo) => {
     try {
       dispatch({ type: 'DONE_REQUEST' })
-      await axios.delete(`http://localhost:5000/api/todos/${todo._id}`, 
+      await axios.delete(`/api/todos/${todo._id}`, 
         { 
           headers: { authorization: `Bearer ${userInfo.token}` } 
         }
@@ -97,7 +97,7 @@ const HomePage = () => {
   const doneHandler = async (todo) => {
     try {
       dispatch({ type: 'DONE_REQUEST' })
-      const { data } = await axios.put(`http://localhost:5000/api/todos/${todo._id}`,
+      const { data } = await axios.put(`/api/todos/${todo._id}`,
         {},
         {
           headers: { authorization: `Bearer ${userInfo.token}` } 
@@ -112,7 +112,7 @@ const HomePage = () => {
     if(window.confirm('Are you sure you want to delete all?')) {
       try {
         dispatch({ type: 'DONE_REQUEST' });
-        await axios.delete(`http://localhost:5000/api/todos/all`, 
+        await axios.delete(`/api/todos/all`, 
           { 
             headers: { authorization: `Bearer ${userInfo.token}` } 
           }

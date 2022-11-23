@@ -26,7 +26,7 @@ const RegisterPage = () => {
         e.preventDefault();
         if(password === confPassword) {
            try {
-                const { data } = await axios.post('http://localhost:5000/api/users/register',
+                const { data } = await axios.post('/api/users/register',
                     {
                         username,
                         password
