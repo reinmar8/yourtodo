@@ -13,6 +13,12 @@ const SignInPage = () => {
 
   const { state, dispatch } = useContext(Store);
   const { userInfo } = state;
+
+  useEffect(() => {
+    if(userInfo) {
+      navigate('/yourtodo');
+    }
+  },[userInfo, navigate]);
   
   const submitHandler = async (e) => {
     e.preventDefault();
